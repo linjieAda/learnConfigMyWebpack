@@ -11,36 +11,36 @@ study webpack
 
 * 这里nodeModules为node-module目录
 * html: Exports HTML as string, require references to static resources.
-* '[ext]': 文件的扩展名
+* 'ext': 文件的扩展名
 
-    loaders: [
-      {
-        test: /\.js?$/,
-        exclude: [nodeModules],
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react', 'stage-0', 'stage-1', 'stage-3'],
-          plugins: ['transform-decorators-legacy']
+      loaders: [
+        {
+          test: /\.js?$/,
+          exclude: [nodeModules],
+          loader: 'babel',
+          query: {
+            presets: ['es2015', 'react', 'stage-0', 'stage-1', 'stage-3'],
+            plugins: ['transform-decorators-legacy']
+          }
+        },
+        {
+          test: /\.s?css$/,
+          exclude: [nodeModules],
+          loader: 'style!css!postcss-loader!sass',
+        },
+        {
+          test: /\.(jpg|jpeg|gif|png)$/,
+          exclude: [nodeModules],
+          loader: 'url?limit=10000&name=img/[name].[sha512:hash:base64:7].[ext]'
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|svg)$/,
+          exclude: [nodeModules],
+          loader: 'url?limit=10000&name=fonts/[name].[sha512:hash:base64:7].[ext]'
+        },
+        {
+          test: /\.html$/,
+          exclude: [nodeModules],
+          loader: 'html?name=html/[name].[ext]'
         }
-      },
-      {
-        test: /\.s?css$/,
-        exclude: [nodeModules],
-        loader: 'style!css!postcss-loader!sass',
-      },
-      {
-        test: /\.(jpg|jpeg|gif|png)$/,
-        exclude: [nodeModules],
-        loader: 'url?limit=10000&name=img/[name].[sha512:hash:base64:7].[ext]'
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|svg)$/,
-        exclude: [nodeModules],
-        loader: 'url?limit=10000&name=fonts/[name].[sha512:hash:base64:7].[ext]'
-      },
-      {
-        test: /\.html$/,
-        exclude: [nodeModules],
-        loader: 'html?name=html/[name].[ext]'
-      }
-    ]
+      ]
