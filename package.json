@@ -1,0 +1,27 @@
+{
+  "name": "stylewebpack",
+  "version": "1.0.0",
+  "description": "study webpack",
+  "main": "webpack.config.js",
+  "bin": {
+    "stylewebpack": "app.bundle.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linjieAda/learnConfigreMyWebpack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linjieAda/learnConfigreMyWebpack/issues"
+  },
+  "homepage": "https://github.com/linjieAda/learnConfigreMyWebpack#readme",
+  "devDependencies": {
+    "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.7",
+    "babel-preset-es2015": "^6.18.0"
+  }
+}
