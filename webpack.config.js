@@ -1,10 +1,11 @@
 const path = require('path')
 const nodeModules = path.resolve(__dirname, 'node_modules')
+const webpack = require('webpack')
 
 const config = {
   entry: './src/app.js',
   output: {
-      path: './bin',
+      path: path.resolve(__dirname, 'bin'),
       filename: 'app.bundle.js'
   },
   module: {
@@ -14,7 +15,7 @@ const config = {
         exclude: [nodeModules],
         loader: 'babel',
         query: {
-          presets: ['es2015', 'react', 'stage-0', 'stage-1', 'stage-3'],
+          presets: ['es2015', 'stage-0', 'stage-1', 'stage-3'],
           plugins: ['transform-decorators-legacy']
         }
       },
@@ -44,12 +45,9 @@ const config = {
     new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.[hash:8].js'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env),
-    }),
   ]
 }
 
 config.plugins.push(new webpack.HotModuleReplacementPlugin())
 
-module.exports config
+module.exports = config
