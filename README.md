@@ -44,3 +44,20 @@ study webpack
           loader: 'html?name=html/[name].[ext]'
         }
       ]
+
+### plugin
+* CommonsChunkPlugin： 整理所有js最后汇总到verdor.js中
+* OccurenceOrderPlugin： reduces to total file size and is recommended.
+* DefinePlugin： 定义全局变量
+* HotModuleReplacementPlugin: 热插拔
+
+        plugins: [
+            new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.[hash:8].js'),
+            new webpack.optimize.OccurenceOrderPlugin(),
+            new webpack.NoErrorsPlugin(),
+            new webpack.DefinePlugin({
+              'process.env.NODE_ENV': JSON.stringify(env),
+            }),
+          ]
+
+       config.plugins.push(new webpack.HotModuleReplacementPlugin())

@@ -1,7 +1,7 @@
 const path = require('path')
 const nodeModules = path.resolve(__dirname, 'node_modules')
 
-module.exports = {
+const config = {
   entry: './src/app.js',
   output: {
       path: './bin',
@@ -39,5 +39,17 @@ module.exports = {
         loader: 'html?name=html/[name].[ext]'
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.[hash:8].js'),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(env),
+    }),
+  ]
 }
+
+config.plugins.push(new webpack.HotModuleReplacementPlugin())
+
+module.exports config
