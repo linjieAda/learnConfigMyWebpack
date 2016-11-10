@@ -13,7 +13,7 @@ study webpack
 * html: Exports HTML as string, require references to static resources.
 * 'ext': 文件的扩展名
 
-      loaders: [
+       loaders: [
         {
           test: /\.js?$/,
           exclude: [nodeModules],
