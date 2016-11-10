@@ -9,9 +9,9 @@ study webpack
 * loaders: An array of loaders as string
 * query: "?" 之后的内容
 
-*这里nodeModules为node-module目录
-*html: Exports HTML as string, require references to static resources.
-*'[ext]': 文件的扩展名
+* 这里nodeModules为node-module目录
+* html: Exports HTML as string, require references to static resources.
+* '[ext]': 文件的扩展名
 
     loaders: [
       {
