@@ -50,6 +50,7 @@ study webpack
 * OccurenceOrderPlugin： reduces to total file size and is recommended.
 * DefinePlugin： 定义全局变量
 * HotModuleReplacementPlugin: 热插拔
+* HtmlWebpackPlugin: 将html模板和打包好的vendor.js形成页面
 
         plugins: [
             new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.[hash:8].js'),
@@ -61,3 +62,10 @@ study webpack
           ]
 
        config.plugins.push(new webpack.HotModuleReplacementPlugin())
+       config.plugins.push(new HtmlWebpackPlugin({
+          title:  '学习webpack',
+          template: 'index.ejs',
+          filename: 'learnWebpack/index.html',
+          chunks: ['verdors', 'learnWebpack'],
+          cache: true
+        }))

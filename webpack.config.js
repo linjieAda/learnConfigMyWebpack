@@ -1,12 +1,13 @@
 const path = require('path')
 const nodeModules = path.resolve(__dirname, 'node_modules')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
   entry: './src/app.js',
   output: {
       path: path.resolve(__dirname, 'bin'),
-      filename: 'app.bundle.js'
+      filename: 'verdors.js'
   },
   module: {
     loaders: [
@@ -49,5 +50,12 @@ const config = {
 }
 
 config.plugins.push(new webpack.HotModuleReplacementPlugin())
+config.plugins.push(new HtmlWebpackPlugin({
+  title:  '学习webpack',
+  template: 'index.ejs',
+  filename: 'learnWebpack/index.html',
+  chunks: ['verdors', 'learnWebpack'],
+  cache: true
+}))
 
 module.exports = config
