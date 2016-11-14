@@ -54,20 +54,22 @@ loaders: [
 * HotModuleReplacementPlugin: 热插拔
 * HtmlWebpackPlugin: 将html模板和打包好的vendor.js形成页面
 
-        plugins: [
-            new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.[hash:8].js'),
-            new webpack.optimize.OccurenceOrderPlugin(),
-            new webpack.NoErrorsPlugin(),
-            new webpack.DefinePlugin({
-              'process.env.NODE_ENV': JSON.stringify(env),
-            }),
-          ]
+```javascript
+ plugins: [
+     new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.[hash:8].js'),
+     new webpack.optimize.OccurenceOrderPlugin(),
+     new webpack.NoErrorsPlugin(),
+     new webpack.DefinePlugin({
+       'process.env.NODE_ENV': JSON.stringify(env),
+     }),
+   ]
 
-       config.plugins.push(new webpack.HotModuleReplacementPlugin())
-       config.plugins.push(new HtmlWebpackPlugin({
-          title:  '学习webpack',
-          template: 'index.ejs',
-          filename: 'learnWebpack/index.html',
-          chunks: ['verdors', 'learnWebpack'],
-          cache: true
-        }))
+config.plugins.push(new webpack.HotModuleReplacementPlugin())
+config.plugins.push(new HtmlWebpackPlugin({
+   title:  '学习webpack',
+   template: 'index.ejs',
+   filename: 'learnWebpack/index.html',
+   chunks: ['verdors', 'learnWebpack'],
+   cache: true
+ }))
+```
