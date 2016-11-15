@@ -1,4 +1,4 @@
-aaa = require('./aaa.js');
+const aaa = require('./aaa.js');
 
 const addMethod = (a,b) => {
   return a + b

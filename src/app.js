@@ -1,4 +1,4 @@
-cats = require('./cats.js');
+const cats = require('./cats.js');
 
 const addMethod = (a,b) => {
   return a + b

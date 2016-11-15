@@ -26,6 +26,8 @@
     "babel-preset-stage-1": "^6.5.0",
     "babel-preset-stage-3": "^6.5.0",
     "html-webpack-plugin": "^2.24.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   }

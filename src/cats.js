@@ -1,2 +1,2 @@
-var cats = ['dave', 'henry', 'martha'];
+const cats = ['dave', 'henry', 'martha'];
 module.exports = cats;

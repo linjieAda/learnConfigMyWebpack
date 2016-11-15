@@ -4,13 +4,15 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
+  devtool: 'source-map',
   entry: {
     test: ['./src/app.js'],
-    search: ['./search/app.js']
+    search: ['./search/app.js'],
+    vendors: ['react', 'react-dom']
   },
   output: {
       path: path.resolve(__dirname, 'bin'),
-      filename: '[name].js'
+      filename: 'js/[name].[hash:8].js'
   },
   module: {
     loaders: [
@@ -46,7 +48,10 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('verdors.js'),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendors',      // 公共的chunk
+      filename: "js/vendors.[hash:8].js",
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
   ]
@@ -57,7 +62,7 @@ config.plugins.push(new HtmlWebpackPlugin({
   title:  '学习webpack',
   template: 'index.ejs',
   filename: 'test/index.html',
-  chunks: ['verdors', 'test'],
+  chunks: ['vendors', 'test'],
   cache: true
 }))
 
@@ -65,7 +70,7 @@ config.plugins.push(new HtmlWebpackPlugin({
   title:  '学习webpack',
   template: 'index.ejs',
   filename: 'search/index.html',
-  chunks: ['verdors', 'search'],
+  chunks: ['vendors', 'search'],
   cache: true
 }))
 
