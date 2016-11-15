@@ -6,8 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const config = {
   devtool: 'source-map',
   entry: {
-    test: ['./src/app.js'],
-    search: ['./search/app.js'],
+    cats: ['./src/cats/app.js'],
+    search: ['./src/search/app.js'],
     vendors: ['react', 'react-dom']
   },
   output: {
@@ -48,12 +48,12 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendors',      // 公共的chunk
-      filename: "js/vendors.[hash:8].js",
-    }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.NoErrorsPlugin(),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendors',      // 公共的chunk
+    //   filename: "js/vendors.[hash:8].js",
+    // }),
+    // new webpack.optimize.OccurenceOrderPlugin(),
+    // new webpack.NoErrorsPlugin(),
   ]
 }
 
@@ -61,8 +61,8 @@ config.plugins.push(new webpack.HotModuleReplacementPlugin())
 config.plugins.push(new HtmlWebpackPlugin({
   title:  '学习webpack',
   template: 'index.ejs',
-  filename: 'test/index.html',
-  chunks: ['vendors', 'test'],
+  filename: 'cats/index.html',
+  chunks: ['vendors', 'cats'],
   cache: true
 }))
 
