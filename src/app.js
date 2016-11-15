@@ -14,4 +14,4 @@ const obj = {
 const { a, b } = obj
 console.log(a,b)
 console.log(addMethod(1,1))
-console.log(cats);
+console.log('this is src')

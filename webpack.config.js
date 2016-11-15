@@ -4,10 +4,13 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
-  entry: './src/app.js',
+  entry: {
+    test: ['./src/app.js'],
+    search: ['./search/app.js']
+  },
   output: {
       path: path.resolve(__dirname, 'bin'),
-      filename: 'verdors.js'
+      filename: '[name].js'
   },
   module: {
     loaders: [
@@ -43,7 +46,7 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'js/vendors.[hash:8].js'),
+    new webpack.optimize.CommonsChunkPlugin('verdors.js'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
   ]
@@ -53,8 +56,16 @@ config.plugins.push(new webpack.HotModuleReplacementPlugin())
 config.plugins.push(new HtmlWebpackPlugin({
   title:  '学习webpack',
   template: 'index.ejs',
-  filename: 'learnWebpack/index.html',
-  chunks: ['verdors', 'learnWebpack'],
+  filename: 'test/index.html',
+  chunks: ['verdors', 'test'],
+  cache: true
+}))
+
+config.plugins.push(new HtmlWebpackPlugin({
+  title:  '学习webpack',
+  template: 'index.ejs',
+  filename: 'search/index.html',
+  chunks: ['verdors', 'search'],
   cache: true
 }))
 

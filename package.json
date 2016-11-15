@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "description": "study webpack",
   "main": "webpack.config.js",
-  "bin": {
-    "stylewebpack": "app.bundle.js"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "devwin": "node webpack-dev-server.js"
   },
   "repository": {
